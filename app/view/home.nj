@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+        const socket = io('http://127.0.0.1:7001');
+
+        socket.on('connect', () => {
+            console.log('connect!');
+            socket.emit('chat', 'hello world!');
+        });
+
+        socket.on('res', msg => {
+            console.log('res from server: %s!', msg);
+        });
+    </script>
+  </body>
+</html>
